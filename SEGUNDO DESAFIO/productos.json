@@ -7,14 +7,5 @@
     "code": "A1z",
     "stock": 10,
     "id": 1
-  },
-  {
-    "title": "NUEVO objeto de prueba",
-    "descripcion": "i-phone 15",
-    "price": 81030,
-    "thumbnail": "http://imagen2",
-    "code": "A1z",
-    "stock": 5,
-    "id": 2
   }
 ]

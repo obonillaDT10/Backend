@@ -25,6 +25,13 @@ class ProductManager {
          try {
             const datos = await fs.readFile(this.filePath, "utf-8");
             const productos = JSON.parse(datos)
+
+            const existingProduct = productos.find((p) => p.code === producto.code);
+            if (existingProduct) {
+              console.log('Error: Ya existe un producto con el mismo código.');
+              return;
+            }
+
             let newProductId 
             if (productos[productos.length -1] && productos[productos.length - 1].id){
                    newProductId = productos[productos.length -1].id
@@ -124,8 +131,9 @@ class ProductManager {
 const productManager = new ProductManager(filePath);
 
 async function main() {
-    //traemos todos los productos, array vacío
-   // console.log(await productManager.getProductos());
+    
+//traemos todos los productos, array vacío
+// console.log(await productManager.getProductos());
 
 
 //agrega los productos
@@ -133,14 +141,24 @@ async function main() {
 //     title: "Televisor", 
 //     descripcion: "Pantalla plana",
 //     price: 80000,
-//     thumbnail: "http://imagen2",
+//     thumbnail: "http://imagen1",
 //     code: "A1z",
+//     stock: 10
+//   })
+
+//   await productManager.addProduct({
+//     title: "Aire Acondicionado", 
+//     descripcion: "5000 frigorias",
+//     price: 140000,
+//     thumbnail: "http://imagen2",
+//     code: "A1za",
 //     stock: 10
 //   })
 
 //llamamos a los productos agregados
 //console.log(await productManager.getProductos());
 
+//Buscamos producto por id
 //await productManager.getById(6)
 
 //PROBAR MÉTODO updateProduct 
@@ -154,7 +172,7 @@ async function main() {
 // })
 
 //probando método Delete
-// await productManager.deleteProduct(3)
+//await productManager.deleteProduct(2)
 
 }
 
