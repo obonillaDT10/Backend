@@ -1,8 +1,17 @@
+//estamos aprendiendo a manejar archivos con node- Node es el entorno de ejecucion que interpreta lenguaje javascript. Node tiene dentro
+// de su "codigo interno" modulos que estan disponibles para usar, lo unico que hay que hacer para usarlo es importarlos una vez que 
+// estan importados, listo ya se pueden usar. En este caso 
+//vamos a usar el modulo de file system, abreviado fs y los metodos que incluye son read file, write file, entre otros.
+
+
 const fs = require("fs/promises");
 const path = require("path");//importo el modulo de fileSystemPath para pasar de una manera más facil la ruta donde voy a almacenar mis productos.
 const filePath = path.join(__dirname, "productos.json");
 
-
+//clase = molde. Cada clase necesita la función constructor con la que se van a crear los objetos. En este caso la clase es ProductManager
+//y la función es "constructor".
+//filePath es la ruta entera almacenada en una palabra. 
+//Constructor va a almacenar todo en filePath.
 class ProductManager {
   constructor(filePath) {
     this.filePath = filePath;
@@ -37,7 +46,10 @@ class ProductManager {
              id: newProductId + 1
             })
 
-            
+            //stringify es un traductor de lenguajes. 
+            //Json Stringify se usa para traducir de lenguaje javaScrypt a lenguaje Json
+            //Json.parse: Traductor de Json a JavaScrypt. Los dos traductores son exlusivos para la funcion que traducen. 
+            //Es decir, Json Stringify es explsivo de JavaScrypt a Json y Json Parse explusivo de Json a JavaScrypt. 
         await fs.writeFile(this.filePath, JSON.stringify(productos, null, 2))
 
         }
@@ -125,7 +137,7 @@ const productManager = new ProductManager(filePath);
 
 async function main() {
     //traemos todos los productos, array vacío
-   // console.log(await productManager.getProductos());
+   //console.log(await productManager.getProductos());
 
 
 //agrega los productos
@@ -139,12 +151,12 @@ async function main() {
 //   })
 
 //llamamos a los productos agregados
-//console.log(await productManager.getProductos());
+// console.log(await productManager.getProductos());
 
-//await productManager.getById(6)
+// await productManager.getById(1)
 
 //PROBAR MÉTODO updateProduct 
-// await productManager.updateProduct(8, {
+// await productManager.updateProduct(1, {
 //     title: "NUEVO objeto de prueba", 
 //     descripcion: "i-phone 15",
 //     price: 81030,
@@ -154,7 +166,7 @@ async function main() {
 // })
 
 //probando método Delete
-// await productManager.deleteProduct(3)
+await productManager.deleteProduct(1)
 
 }
 
