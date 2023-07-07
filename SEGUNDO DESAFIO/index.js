@@ -133,7 +133,7 @@ const productManager = new ProductManager(filePath);
 async function main() {
     
 //traemos todos los productos, array vacío
-// console.log(await productManager.getProductos());
+//console.log(await productManager.getProductos());
 
 
 //agrega los productos
