@@ -1,11 +1,11 @@
 const fs = require("fs/promises");
 const path = require("path");//importo el modulo de fileSystemPath para pasar de una manera más facil la ruta donde voy a almacenar mis productos.
-const filePath = path.join(__dirname, "productos.json");
+const filePath = path.join(__dirname, "products.json");
 
 
 class ProductManager {
   constructor(filePath) {
-    this.filePath = filePath;
+    this.filePath = filePath
   }
 
     async getProductos() {
@@ -21,37 +21,38 @@ class ProductManager {
         }
       }
 
-    async addProduct(producto) {
-         try {
+      async addProduct(producto) {
+        try {
             const datos = await fs.readFile(this.filePath, "utf-8");
-            const productos = JSON.parse(datos)
-
+            const productos = JSON.parse(datos);
+    
             const existingProduct = productos.find((p) => p.code === producto.code);
             if (existingProduct) {
-              console.log('Error: Ya existe un producto con el mismo código.');
-              return;
+                console.log('Error: Ya existe un producto con el mismo código.');
+                return null;
             }
-
-            let newProductId 
-            if (productos[productos.length -1] && productos[productos.length - 1].id){
-                   newProductId = productos[productos.length -1].id
+    
+            let newProductId;
+            if (productos.length > 0 && productos[productos.length - 1].id) {
+                newProductId = productos[productos.length - 1].id;
             } else {
-                newProductId = 0
+                newProductId = 0;
             }
-
-            productos.push({
-             ...producto,
-             id: newProductId + 1
-            })
-
+    
+            const newProduct = {
+                ...producto,
+                id: newProductId + 1
+            };
+    
+            productos.push(newProduct);
+    
+            await fs.writeFile(this.filePath, JSON.stringify(productos, null, 2));
             
-        await fs.writeFile(this.filePath, JSON.stringify(productos, null, 2))
-
-        }
-         catch (err) {
+            return newProduct;
+        } catch (err) {
             console.log("ERROR POR ACA --> ", err);
-
-         }
+            return null;
+        }
     }
 
     async getById(id) {
@@ -78,7 +79,7 @@ class ProductManager {
         try {
             const datos = await fs.readFile(this.filePath, "utf-8");
             const productos = JSON.parse(datos)
-            const productoEncontrado = productos.find(producto => producto.id === id);
+            const productoEncontrado = productos.find(producto => producto.id === +id);
 
             if (productoEncontrado) {
                 productoEncontrado.title = producto.title || productoEncontrado.title;
@@ -88,17 +89,13 @@ class ProductManager {
                 productoEncontrado.code = producto.code || productoEncontrado.code
                 productoEncontrado.stock = producto.stock || productoEncontrado.stock
 
-                console.log("Producto actualizado:", productoEncontrado);
-                await fs.writeFile(this.filePath, JSON.stringify(productos, null, 2))
-                
-                
-            } else {
-                console.log("Producto no encontrado");
-            }
+                await fs.writeFile(this.filePath, JSON.stringify(productos, null, 2));
 
-
+            return productoEncontrado;
+        } else {
+            return null;
         }
-
+        }
         catch (err) {
             console.log("ATENTO AL ERROR ACÁ", err);
         }
@@ -106,25 +103,24 @@ class ProductManager {
 
     async deleteProduct(id) {
         try {
-            const datos = await fs.readFile(this.filePath, "utf-8");
-            const productos = JSON.parse(datos)
-            const productoIndex = productos.findIndex(producto => producto.id === id);
-
-            if (productoIndex !== -1) {
-                productos.splice(productoIndex, 1);
-                console.log("Producto eliminado");
-    
-                await fs.writeFile(this.filePath, JSON.stringify(productos, null, 2))
-            } else {
-                console.log("Producto no encontrado");
+          const datos = await fs.readFile(this.filePath, "utf-8");
+          const productos = JSON.parse(datos);
+          const productoIndex = productos.findIndex((producto) => producto.id === id);
+      
+          if (productoIndex !== -1) {
+            productos.splice(productoIndex, 1);
+            console.log("Producto eliminado");
+      
+            await fs.writeFile(this.filePath, JSON.stringify(productos, null, 2));
+            return true; // Agrega un retorno indicando que el producto se eliminó correctamente
+          } else {
+            return false; // Agrega un retorno indicando que el producto no se encontró
+          }
+        } catch (err) {
+          console.log("nuevo error", err);
+          return false; // Agrega un retorno en caso de error
         }
-    }
-        catch (err) {
-            console.log("nuevo error", err);
-
-        }
-    }
-
+      }      
 
 }
 

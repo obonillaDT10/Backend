@@ -1,4 +1,5 @@
 const express = require("express")
+const { api } = require('./routes');
 const app = express()
 
 
@@ -10,7 +11,7 @@ app.use(express.urlencoded({
 app.use(express.json())
 app.use(express.static("public"))
 
-app.use("api", api)
+app.use("/api", api)
 
 //SERVIDOR
 const port = 8080
