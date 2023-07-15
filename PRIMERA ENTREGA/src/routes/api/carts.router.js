@@ -46,17 +46,17 @@ router.post("/:cid/products/:pid", async (req, res) => {
 
     const result = await cartsManager.addProductToCart(cartId, productId)
 
-    if(result === "Producto no encontrado"){
-        res.status(404).send({status: 404, message: "Product not found"});
-    } else if (result === "Carrito no encontrado") {
-        res.status(404).send({status: 404, message: "Cart not found"})
+    if(result === "Product not found"){
+        res.status(404).send({status: 404, message: `Product with id: ${productId} not found`});
+    } else if (result === "Cart not found") {
+        res.status(404).send({status: 404, message: `Cart with id: ${cartId} not found`})
     } else {
-        res.status(200).send({status: 200, message: "Product added to cart"})
+        res.status(200).send({status: 200, message: `Product with id: ${productId} added to cart`})
     } 
 } catch (err) {
         console.error("Error adding product to cart", err)
 
-        res.status(500).send({status: 500, message: "Ha ocurrido un erro al aregar el producto al carrito"})
+        res.status(500).send({status: 500, message: "An error has occured while adding the product to the cart"})
     }
 })
 

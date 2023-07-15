@@ -17,7 +17,7 @@ class CartsManager {
       const carts = JSON.parse(datos);
       return carts;
     } catch (err) {
-      console.log("Aquí está el error", err);
+      console.log("The error is here", err);
       return []; // Devuelve un array vacío si hay un error en la lectura del archivo
     }
   }
@@ -30,21 +30,21 @@ class CartsManager {
       id = carts[carts.length - 1].id + 1;
     }
 
-    const nuevoCarrito = {
+    const newCart = {
       id: id,
       products: [],
     };
 
-    carts.push(nuevoCarrito);
+    carts.push(newCart);
 
     try {
       await fs.promises.writeFile(
         this.filepath,
         JSON.stringify(carts, null, 2)
       );
-      return nuevoCarrito;
+      return newCart;
     } catch (err) {
-      console.log("Error al guardar el carrito", err);
+      console.log("Error saving this cart", err);
       return null;
     }
   }
@@ -61,7 +61,7 @@ class CartsManager {
         return null;
       }
     } catch (error) {
-      console.log("Error al leer el archivo de carritos:", error);
+      console.log("Error reading Carts file:", error);
       return null;
     }
   }
@@ -73,13 +73,13 @@ class CartsManager {
       let cartById = await this.getCartById(+cid);
       
       if (!cartById) {
-        return "Carrito no encontrado";
+        return "Cart not found";
       }
 
       // Verificar si el producto existe en products.json
       let productById = await this.productManager.getById(+pid);
       if (!productById) {
-        return "Producto no encontrado";
+        return "Product not found";
       }
 
       // Buscar el índice del producto en el carrito
@@ -106,10 +106,10 @@ class CartsManager {
         JSON.stringify(updatedCarts, null, 2)
       );
 
-      return "Producto Agregado al Carrito";
+      return "Product added to Cart";
     } catch (error) {
-      console.error("Error al agregar el producto al carrito:", error);
-      return "Ha ocurrido un error al agregar el producto al carrito";
+      console.error("Error adding product to Cart:", error);
+      return "An error has ocurred while adding product to Cart";
     }
   }
 
@@ -128,7 +128,7 @@ class CartsManager {
         console.log(`Cart with ${id} not found`);
       }
     } catch (error) {
-      console.log("Error al leer o escribir el archivo de carritos:", error);
+      console.log("Error reading and writing the file from Carts:", error);
     }
   }
   

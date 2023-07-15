@@ -1,14 +1,5 @@
 [
   {
-    "title": "ya salimos lupe",
-    "descripcion": "De techosssss",
-    "price": 50000,
-    "thumbnail": "http://imagen8",
-    "code": "nuevo 9",
-    "stock": 188,
-    "id": 1
-  },
-  {
     "title": "producto 6",
     "descripcion": "Blanco",
     "price": 40000,
@@ -61,5 +52,14 @@
     "code": "A1gff",
     "stock": 18856,
     "id": 12
+  },
+  {
+    "title": "omarssssssssssssss",
+    "descripcion": "De techosssss",
+    "price": 50000,
+    "thumbnail": "http://imagen8",
+    "code": "nuevo 99",
+    "stock": 188999,
+    "id": 13
   }
 ]
