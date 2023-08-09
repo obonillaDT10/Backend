@@ -16,6 +16,12 @@
         const server = http.createServer(app);
         const io = new Server(server);
 
+        // Agregar el middleware para 'req.io' esté disponible
+    app.use((req, res, next) => {
+        req.io = io;
+       next();
+  });
+
         // Configuración de handlebars:
         app.engine('handlebars', handlebars.engine);
         app.set('views', path.join(__dirname, '/views'));

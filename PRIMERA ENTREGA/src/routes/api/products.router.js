@@ -1,20 +1,22 @@
 const {Router} = require("express")
-const ProductManager = require("../../managers/ProductManager")
-const path = require("path");//importo el modulo de fileSystemPath para pasar de una manera más facil la ruta donde voy a almacenar mis productos.
-const filePath = path.join(__dirname, "..", "..", "data", "products.json");
+const productManager = require("../../dao/managers/products/ProductManager.db")
+// const path = require("path");//importo el modulo de fileSystemPath para pasar de una manera más facil la ruta donde voy a almacenar mis productos.
+// const filePath = path.join(__dirname, "..", "..", "data", "products.json");  //PERSISTENCIA EN FILE
 
 
-const productManager = new ProductManager(filePath);
+// const productManager = new ProductManager(filePath); //INSTANCIA PARA PERSISTENCIA EN FILE
 const router = Router()
 
 router.get("/", async(req, res) =>{
-    const limit = req.query.limit
-    const productos = await productManager.getProductos()
-    if (limit){
-        return res.send(productos.slice(0,limit))
-    }
-
-   return res.send(productos)
+    try{
+        const products = await productManager.getProduct
+        console.log(products);
+        res.send({ status: 200, products });
+    } catch (err) {
+        res.status(500).send({
+            message: "Error ocurrer",
+   })
+}
 })
 
 router.get("/:pid", async (req, res) => {

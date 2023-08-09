@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path')
 const filePath = path.join(__dirname, "..", "data", "products.json");
 
-const ProductManager = require('../managers/ProductManager')
+const ProductManager = require('../dao/managers/products/ProductManager.fs')
 const productManager = new ProductManager(filePath)
 
 
