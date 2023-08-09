@@ -9,7 +9,7 @@ const router = Router()
 router.post("/", async (req, res) => {
     const {body} = req
     try{
-        const cart = cartsManager.addCart(body)
+        const cart = await cartsManager.addCart(body)
 
         if (cart) {
             res.status(200).json({ status: 200, message: 'Cart added successfully', cart });
@@ -39,7 +39,7 @@ router.get("/:cid", async (req, res) => {
     }
 })
 
-router.post("/:cid/products/:pid", async (req, res) => {
+router.post("/:cid/product/:pid", async (req, res) => {
     try{
     const cartId = req.params.cid;
     const productId = req.params.pid;

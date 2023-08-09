@@ -3,7 +3,7 @@
     "title": "producto 6",
     "descripcion": "Blanco",
     "price": 40000,
-    "thumbnail": "http://imagen6",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Unicode_0x0031.svg/1200px-Unicode_0x0031.svg.png",
     "code": "A1e",
     "stock": 15,
     "id": 6
@@ -12,7 +12,7 @@
     "title": "producto 7",
     "descripcion": "Gris",
     "price": 40000,
-    "thumbnail": "http://imagen7",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Unicode_0x0032.svg/800px-Unicode_0x0032.svg.png",
     "code": "A1f",
     "stock": 18,
     "id": 7
@@ -21,7 +21,34 @@
     "title": "producto 9",
     "descripcion": "De piso",
     "price": 60000,
-    "thumbnail": "http://imagen9",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Unicode_0x0031.svg/1200px-Unicode_0x0031.svg.png",
+    "code": "A1h",
+    "stock": 30,
+    "id": 9
+  },
+  {
+    "title": "producto 6",
+    "descripcion": "Blanco",
+    "price": 40000,
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Unicode_0x0031.svg/1200px-Unicode_0x0031.svg.png",
+    "code": "A1e",
+    "stock": 15,
+    "id": 6
+  },
+  {
+    "title": "producto 7",
+    "descripcion": "Gris",
+    "price": 40000,
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Unicode_0x0032.svg/800px-Unicode_0x0032.svg.png",
+    "code": "A1f",
+    "stock": 18,
+    "id": 7
+  },
+  {
+    "title": "producto 9",
+    "descripcion": "De piso",
+    "price": 60000,
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Unicode_0x0031.svg/1200px-Unicode_0x0031.svg.png",
     "code": "A1h",
     "stock": 30,
     "id": 9
@@ -30,7 +57,7 @@
     "title": "producto 10",
     "descripcion": "De pared",
     "price": 35000,
-    "thumbnail": "http://imagen10",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Unicode_0x0032.svg/800px-Unicode_0x0032.svg.png",
     "code": "A1k",
     "stock": 22,
     "id": 10
@@ -39,7 +66,7 @@
     "title": "prod 18",
     "descripcion": "De techo",
     "price": 50000,
-    "thumbnail": "http://imagen8",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Unicode_0x0031.svg/1200px-Unicode_0x0031.svg.png",
     "code": "A1gf",
     "stock": 188,
     "id": 11
@@ -48,18 +75,9 @@
     "title": "prod 2",
     "descripcion": "De techosssss",
     "price": 50000,
-    "thumbnail": "http://imagen8",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Unicode_0x0032.svg/800px-Unicode_0x0032.svg.png",
     "code": "A1gff",
     "stock": 18856,
     "id": 12
-  },
-  {
-    "title": "omarssssssssssssss",
-    "descripcion": "De techosssss",
-    "price": 50000,
-    "thumbnail": "http://imagen8",
-    "code": "nuevo 99",
-    "stock": 188999,
-    "id": 13
   }
 ]
