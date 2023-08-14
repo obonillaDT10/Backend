@@ -33,13 +33,6 @@ app.get("/products/:id", async(req, res) =>{
 })
 
 
-
-
-
-
-
-
-
 const port = 8080
 app.listen(port, () => {
     console.log(`Express Server listening at http://localhost:${port}`)

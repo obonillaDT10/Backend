@@ -3,7 +3,7 @@ const productsModel = require('../../models/ProductModel');
 
 class ProductManager {
 
-  async getProduct() {
+  async getProducts() {
     const products = await productsModel.find().lean();
 
     return products;

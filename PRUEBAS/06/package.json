@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "moment": "^2.29.4",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.7.1"
   },
   "name": "06",
   "version": "1.0.0",

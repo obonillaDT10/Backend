@@ -29,8 +29,9 @@
 
         // Middlewares
         app.use(express.json());
-        app.use('/static', express.static(path.join(__dirname, '/public')));
-        app.use("/api", api);
+        app.use('/static', express.static(path.join(__dirname + '/public')));
+
+        app.use("/", api);
 
         // Web socket
         io.on('connection', socketManager);

@@ -9,7 +9,7 @@ const router = Router()
 
 router.get("/", async(req, res) =>{
     try{
-        const products = await productManager.getProduct
+        const products = await productManager.getProducts()
         console.log(products);
         res.send({ status: 200, products });
     } catch (err) {
@@ -22,7 +22,7 @@ router.get("/", async(req, res) =>{
 router.get("/:pid", async (req, res) => {
     const id = req.params.pid;
     try {
-        const product = await productManager.getById(+id);
+        const product = await productManager.getById(id);
 
         if (product) {
             res.status(200).json({ status: 200, product });
