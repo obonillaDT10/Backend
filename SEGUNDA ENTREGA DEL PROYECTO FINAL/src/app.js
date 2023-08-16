@@ -37,10 +37,10 @@
         io.on('connection', socketManager);
 
         // Servidor
-        const port = 8080;
+        const port = 8080;//definimos puerto
 
         server.listen(port, () => {
-            console.log(`🚀 Server is up and running on port ${port} 🚀`);
+            console.log(`🚀 Server is up and running on port ${port} 🚀`);//levantamos servidor
         });
 
         console.log('POR FIN TE CONECTASTE A LA BDD');
